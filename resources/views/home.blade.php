@@ -1,5 +1,5 @@
 @extends('layouts.master')
-@section('title', 'Todo')
+@section('title', 'Dashbord')
 @section('content')
 <main>
 <div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark" style="width: 280px;">
@@ -10,13 +10,13 @@
   <hr>
   <ul class="nav nav-pills flex-column mb-auto">
     <li class="nav-item">
-      <a href="/dashbord" class="nav-link active" aria-current="page">
+      <a href="/home" class="nav-link active" aria-current="page">
         <svg class="bi me-2" width="16" height="16"><use xlink:href="#home"/></svg>
         Home
       </a>
     </li>
     <li>
-      <a href="/" class="nav-link text-white">
+      <a href="/todo" class="nav-link text-white">
         <svg class="bi me-2" width="16" height="16"><use xlink:href="#grid"/></svg>
         To-do list
       </a>
@@ -25,7 +25,7 @@
   <hr>
     <div class="dropdown">
       <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-        <img src="https://www.cae.net/wp-content/uploads/2015/11/consejos-sacar-maximo-partido-elearning.jpg" alt="" width="32" height="32" class="rounded-circle me-2">
+        <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2">
         <strong>mdo</strong>
       </a>
       <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
@@ -37,64 +37,7 @@
       </ul>
     </div>
   </div>
-  
-  <div class="container pt-5">
-     <div class="card shadow-sm">
-         <div class="card-body">
-             <h3 class="TitleMain">To-do list</h3>
-             <form action="{{ route('store')}}" method="Post" autocomplete="off">
-                 @csrf
-                 <div class="input-group">
-                     <input type="text" name="content" class="form-control" placeholder="Add Your Todo">
-                            <button class="btn btn-primary" type="submit">Add</button>
-                 </div>
-
-             </form>
-             @if(count($todolists ) > 0)
-             <ul class="list-group list-group-flush mt-3">
-                    @foreach($todolists as $todolist)
-                    
-                    <form action="{{ route('destroy', $todolist->id)}}" method="Post" autocomplete="off">
-                    <div class="input-group mt-2">
-                        @csrf
-                        @method('DELETE')
-                        @if($todolist->completed)
-                        <input  style="background-color:green; color:white;text-decoration: line-through;" id="namid" type="text" name="content" class="form-control" value="{{ $todolist->content }}" disabled>
-                        <button class="btn btn-danger float-end" onclick="return confirm('Are you sure?')"  type="submit">Delete</button>
-                       
-                
-            @else 
-            <input type="text" id="namid" name="content" class="form-control" value="{{ $todolist->content }}" disabled>
-            <button class="btn btn-danger float-end" onclick="return confirm('Are you sure?')" type="submit">Delete</button>
-            @endif
-            <a class="btn btn-warning" href="{{asset('/' . $todolist->id . '/completed')}}">Completed</a>
-                        </div>
-                    </form>
-                    
-                </li>
-                    @endforeach
-             </ul>
-             @else
-             <p class="text-center mt-3">No tasks</p>
-                @endif
-          </div>
-          {{ $todolists->links() }}
-          @if (count($todolists))
-           <div class="card-footer"> 
-                You have {{ $todolists->count() }} tasks on page 
-                
-            </div>
-          @endif
-          <div class="flash-message">
-    @foreach (['danger', 'warning', 'success', 'info'] as $msg)
-      @if(Session::has('alert-' . $msg))
-
-      <p class="alert alert-{{ $msg }}">{{ Session::get('alert-' . $msg) }} <a href="/" class="close" data-dismiss="alert" aria-label="close">&times;</a></p>
-      @endif
-    @endforeach
-  </div> <!-- end .flash-message -->
-        </div>
-    </div>
-    </main> 
-    
-    @endsection
+  <div class="container">
+           <p>Programing is a skill best acquired by practice and example rather then theory.</p> 
+  </div>
+@endsection

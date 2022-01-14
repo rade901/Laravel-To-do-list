@@ -14,11 +14,11 @@ use RealRashid\SweetAlert\Facades\Alert;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/dashbord', function () {
-    return view('dashbord');
+Route::get('/home', function () {
+    return view('home');
 });
-Route::get('/', [TodolistController::class, 'index'])->name('index');
-Route::post('/', [TodolistController::class, 'store'])->name('store');
-Route::delete('/{todolist:id}', [TodolistController::class, 'destroy'])->name('destroy');
-Route::get('/{id}/completed', [TodolistController::class, 'completed']);
+Route::get('todo', [TodolistController::class, 'index'])->name('index');
+Route::post('todo', [TodolistController::class, 'store'])->name('store');
+Route::delete('todo{todolist:id}', [TodolistController::class, 'destroy'])->name('destroy');
+Route::get('todo{id}/completed', [TodolistController::class, 'completed']);
 

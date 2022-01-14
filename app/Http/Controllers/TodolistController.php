@@ -10,7 +10,7 @@ class TodolistController extends Controller
     public function index()
     {
        $todolists = Todolist::paginate(10);
-       return view('home', compact('todolists'));
+       return view('todo', compact('todolists'));
        
     }
 

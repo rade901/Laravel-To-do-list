@@ -96,3 +96,11 @@ body {
   .fw-semibold { font-weight: 600; }
   .lh-tight { line-height: 1.25; }
   /* end sidebar css */
+  p{
+    font-size: 26px;
+    font-weight: bold;
+    color: #ffffff;
+    text-align: center;
+    padding-top: 250px;
+    text-shadow: black 0.1em 0.1em 0.2em;
+  }
