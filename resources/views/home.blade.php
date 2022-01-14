@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="{{asset('css/mycss.css')}}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
-    
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 </head>
 <body class="bg-info">
   <div class="container pt-5">
@@ -32,13 +32,13 @@
                         @csrf
                         @method('DELETE')
                         @if($todolist->completed)
-                        <input style="background-color:green; color:white" type="text" name="content" class="form-control" value="{{ $todolist->content }}" disabled>
-                        <button class="btn btn-danger float-end" type="submit">Delete</button>
-                        
+                        <input  style="background-color:green; color:white;text-decoration: line-through;" id="namid" type="text" name="content" class="form-control" value="{{ $todolist->content }}" disabled>
+                        <button class="btn btn-danger float-end" onclick="return confirm('Are you sure?')"  type="submit">Delete</button>
+                       
                 
             @else 
-            <input type="text" name="content" class="form-control" value="{{ $todolist->content }}" disabled>
-            <button class="btn btn-danger float-end" type="submit">Delete</button>
+            <input type="text" id="namid" name="content" class="form-control" value="{{ $todolist->content }}" disabled>
+            <button class="btn btn-danger float-end" onclick="return confirm('Are you sure?')" type="submit">Delete</button>
             @endif
             <a class="btn btn-warning" href="{{asset('/' . $todolist->id . '/completed')}}">Completed</a>
                         </div>
@@ -58,12 +58,26 @@
                 
             </div>
           @endif
-         
+          <div class="flash-message">
+    @foreach (['danger', 'warning', 'success', 'info'] as $msg)
+      @if(Session::has('alert-' . $msg))
+
+      <p class="alert alert-{{ $msg }}">{{ Session::get('alert-' . $msg) }} <a href="/" class="close" data-dismiss="alert" aria-label="close">&times;</a></p>
+      @endif
+    @endforeach
+  </div> <!-- end .flash-message -->
         </div>
     </div>
-   
+    <script>
+$(".flash-message").slideDown(500, function(){
+    setTimeout(function(){
+$(".flash-message").slideUp(500);  
+},2000);
+});
+    </script>
     
-  
+    @include('sweetalert::alert') 
 </body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js" integrity="sha512-7VTiy9AhpazBeKQAlhaLRUk+kAMAb8oczljuyJHPsVPWox/QIXDFOnT9DUk1UC8EbnHKRdQowT7sOBe7LAjajQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </html>

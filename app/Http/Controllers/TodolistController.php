@@ -18,6 +18,7 @@ class TodolistController extends Controller
      
     public function store(Request $request)
     {
+        $request->session()->flash('alert-success', 'Task was successful added!');
        $data = $request->validate([
         'content' => 'required|max:255',
        ]);
