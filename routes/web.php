@@ -14,6 +14,9 @@ use RealRashid\SweetAlert\Facades\Alert;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/dashbord', function () {
+    return view('dashbord');
+});
 Route::get('/', [TodolistController::class, 'index'])->name('index');
 Route::post('/', [TodolistController::class, 'store'])->name('store');
 Route::delete('/{todolist:id}', [TodolistController::class, 'destroy'])->name('destroy');
