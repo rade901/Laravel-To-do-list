@@ -46,7 +46,7 @@
     </div>
 -->
 </div>
-  <div class="container pt-5">
+  <div class="container pt-5 overflow-auto" >
     <div class="card shadow-sm">
       <div class="card-body">
         <h3 class="TitleMain">To-do list</h3>
@@ -94,9 +94,8 @@
       @if (count($todolists))
       <div class="card-footer">
         You have {{ $todolists->count() }} tasks on page
-
-      </div>
       @endif
+      </div>
       <div class="flash-message">
         @foreach (['danger', 'warning', 'success', 'info'] as $msg)
         @if(Session::has('alert-' . $msg))
@@ -105,8 +104,8 @@
         @endif
         @endforeach
       </div> <!-- end .flash-message -->
+      </div>
     </div>
-  </div>
 </main>
 
 @endsection
