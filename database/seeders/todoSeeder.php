@@ -25,6 +25,7 @@ class todoSeeder extends Seeder
                 'updated_at' => $faker->dateTime,
             ]);
         }
+        
      
     }
 }

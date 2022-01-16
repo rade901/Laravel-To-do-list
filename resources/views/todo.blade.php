@@ -90,12 +90,11 @@
         <p class="text-center mt-3">No tasks</p>
         @endif
       </div>
-      {{ $todolists->links() }}
+      {{ $todolists->links() }} 
       @if (count($todolists))
       <div class="card-footer">
-        You have {{ $todolists->count() }} tasks on page
+        You have {{ $todolists->total() }} tasks 
       @endif
-      </div>
       <div class="flash-message">
         @foreach (['danger', 'warning', 'success', 'info'] as $msg)
         @if(Session::has('alert-' . $msg))

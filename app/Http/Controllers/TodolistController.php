@@ -13,7 +13,7 @@ class TodolistController extends Controller
        return view('todo', compact('todolists'));
        
     }
-
+    
     
      
     public function store(Request $request)
@@ -41,6 +41,7 @@ class TodolistController extends Controller
           return redirect()->back()->with('success', "TODO marked as complete!");
       }
   }
+  
 
   
 }
