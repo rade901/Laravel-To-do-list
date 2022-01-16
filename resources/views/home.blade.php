@@ -1,5 +1,5 @@
 @extends('layouts.master')
-@section('title', 'Dashbord')
+@section('title', 'Home')
 @section('content')
 <main>
 <div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark" style="width: 280px;">
