@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TodolistController;
-use RealRashid\SweetAlert\Facades\Alert;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -14,11 +14,11 @@ use RealRashid\SweetAlert\Facades\Alert;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/home', function () {
+Route::get('/', function () {
     return view('home');
 });
-Route::get('todo', [TodolistController::class, 'index'])->name('index');
-Route::post('todo', [TodolistController::class, 'store'])->name('store');
-Route::delete('todo{todolist:id}', [TodolistController::class, 'destroy'])->name('destroy');
-Route::get('todo{id}/completed', [TodolistController::class, 'completed']);
+Route::get('/todo', [TodolistController::class, 'index'])->name('index');
+Route::post('/todo', [TodolistController::class, 'store'])->name('store');
+Route::delete('/todo{todolist:id}', [TodolistController::class, 'destroy'])->name('destroy');
+Route::get('/todo{id}/completed', [TodolistController::class, 'completed']);
 

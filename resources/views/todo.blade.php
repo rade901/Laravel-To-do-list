@@ -12,7 +12,7 @@
     <hr>
     <ul class="nav nav-pills flex-column mb-auto">
       <li class="nav-item">
-        <a href="/home" class="nav-link active" aria-current="page">
+        <a href="/" class="nav-link active" aria-current="page">
           <svg class="bi me-2" width="16" height="16">
             <use xlink:href="#home" />
           </svg>
@@ -67,21 +67,19 @@
               @csrf
               @method('DELETE')
               @if($todolist->completed)
-              <input style="background-color:green; color:white;text-decoration: line-through;" id="namid" type="text" name="content" class="form-control" value="{{ $todolist->content }}" disabled>
+              <div class="form-control" style="background-color:green; color:white;text-decoration: line-through;">{{$todolist->content}}</div>
               <button class="btn btn-danger float-end" onclick="return confirm('Are you sure?')" type="submit">Delete</button>
 
 
               @else
-
               @if(str_starts_with($todolist->content, 'http'))
               <div class="form-control"><a target="about:blank" href="{{ $todolist->content }}">{{$todolist->content}}</a></div>
               @else
               <div class="form-control">{{ $todolist->content }}</div>
               @endif
-              <!-- <input type="text" id="namid" name="content" class="form-control" value="{{ $todolist->content }}" disabled> -->
               <button class="btn btn-danger float-end" onclick="return confirm('Are you sure?')" type="submit">Delete</button>
               @endif
-              <a class="btn btn-warning" href="{{asset('/' . $todolist->id . '/completed')}}">Completed</a>
+              <a class="btn btn-warning" href="{{asset('/todo' . $todolist->id . '/completed')}}">Completed</a>
             </div>
           </form>
 
