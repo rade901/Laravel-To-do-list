@@ -96,11 +96,18 @@ body {
   .fw-semibold { font-weight: 600; }
   .lh-tight { line-height: 1.25; }
   /* end sidebar css */
-  p{
+  .TitleMain{
     font-size: 26px;
     font-weight: bold;
-    color: #ffffff;
+    color: rgb(82, 80, 80);
     text-align: center;
+    text-shadow: rgb(177, 175, 175) 0.1em 0.1em 0.2em;
+  }
+  .textquote{
+    font-size: 30px;
+    font-weight: bold;
+    color: rgb(82, 80, 80);
+    text-align: center;
+    text-shadow: rgb(177, 175, 175) 0.1em 0.1em 0.2em;
     padding-top: 250px;
-    text-shadow: black 0.1em 0.1em 0.2em;
   }
